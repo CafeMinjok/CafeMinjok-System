@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/CafeMinkok.iml" filepath="$PROJECT_DIR$/CafeMinkok.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CafeMinjok.iml" filepath="$PROJECT_DIR$/CafeMinjok.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/gateway.main.iml" filepath="$PROJECT_DIR$/.idea/modules/gateway.main.iml" />
     </modules>
   </component>
 </project>
