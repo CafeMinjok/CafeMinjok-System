@@ -21,7 +21,6 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="17">
-      <module name="CafeMinjok.service.eureka" target="17" />
       <module name="CafeMinjok.service.eureka.main" target="17" />
       <module name="CafeMinjok.service.eureka.test" target="17" />
     </bytecodeTargetLevel>

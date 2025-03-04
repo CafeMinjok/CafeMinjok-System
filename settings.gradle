@@ -1,3 +1,5 @@
 rootProject.name = 'CafeMinjok'
 
 include(":common:domain")
+
+include(":service:eureka:server")
