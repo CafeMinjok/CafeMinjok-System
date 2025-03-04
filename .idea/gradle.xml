@@ -4,20 +4,12 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
-        <option name="externalProjectPath" value="$PROJECT_DIR$/service/eureka" />
-        <option name="gradleJvm" value="corretto-21" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="modules">
           <set>
-            <option value="$PROJECT_DIR$/service/eureka" />
-          </set>
-        </option>
-      </GradleProjectSettings>
-      <GradleProjectSettings>
-        <option name="externalProjectPath" value="$PROJECT_DIR$/service/gateway" />
-        <option name="gradleJvm" value="corretto-21" />
-        <option name="modules">
-          <set>
-            <option value="$PROJECT_DIR$/service/gateway" />
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/common" />
+            <option value="$PROJECT_DIR$/common/domain" />
           </set>
         </option>
       </GradleProjectSettings>
