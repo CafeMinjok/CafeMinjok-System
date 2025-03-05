@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/CafeMinjok.iml" filepath="$PROJECT_DIR$/CafeMinjok.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/gateway.main.iml" filepath="$PROJECT_DIR$/.idea/modules/gateway.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/common/domain/CafeMinjok.common.domain.main.iml" filepath="$PROJECT_DIR$/.idea/modules/common/domain/CafeMinjok.common.domain.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/service/gateway/server/CafeMinjok.service.gateway.server.main.iml" filepath="$PROJECT_DIR$/.idea/modules/service/gateway/server/CafeMinjok.service.gateway.server.main.iml" />
     </modules>
   </component>
 </project>
