@@ -118,6 +118,19 @@ public class UserQueueService {
                 .map(rank -> new RegisterUserResponse(rank + 1));
     }
 
+    public Mono<Boolean> isAllowed(String userId) {
+        return reactiveRedisTemplate.opsForZSet()
+                .rank(USER_QUEUE_PROCEED_KEY, userId)
+                .defaultIfEmpty(-1L)
+                .map(rank -> rank >= 0)
+                .flatMap(isAllowed -> {
+                    if (isAllowed) {
+                        return updateWaitQueueScore(userId).thenReturn(true);
+                    }
+                    return Mono.just(false);
+                });
+    }
+
     private Mono<Boolean> updateUserActivityTime(String userId) {
         long currentTime = Instant.now().getEpochSecond();
         return reactiveRedisTemplate.opsForZSet().add(USER_QUEUE_PROCEED_KEY, userId, currentTime);
