@@ -11,10 +11,20 @@
             <option value="$PROJECT_DIR$/common" />
             <option value="$PROJECT_DIR$/common/domain" />
             <option value="$PROJECT_DIR$/service" />
+            <option value="$PROJECT_DIR$/service/auth" />
+            <option value="$PROJECT_DIR$/service/auth/auth_dto" />
             <option value="$PROJECT_DIR$/service/eureka" />
             <option value="$PROJECT_DIR$/service/eureka/server" />
             <option value="$PROJECT_DIR$/service/gateway" />
             <option value="$PROJECT_DIR$/service/gateway/server" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/service/auth/auth_dto" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/service/auth/auth_dto" />
           </set>
         </option>
       </GradleProjectSettings>
