@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-public class JwtClaim {
+public class JwtClaim {     // 사용자 인증 정보
 
     private Long userId;
     private String username;

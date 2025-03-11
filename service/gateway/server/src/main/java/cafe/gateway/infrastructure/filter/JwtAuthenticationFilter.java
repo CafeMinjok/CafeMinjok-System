@@ -51,6 +51,7 @@ public class JwtAuthenticationFilter implements GlobalFilter {
         }
 
         try {
+            // 사용자 인증
             JwtClaim claims = authService.verifyToken(token.get());
             this.addUserClaimsToHeaders(exchange, claims);
         } catch (Exception e) {
@@ -66,8 +67,7 @@ public class JwtAuthenticationFilter implements GlobalFilter {
             try {
                 ObjectMapper objectMapper = new ObjectMapper();
                 String jsonClaims = objectMapper.writeValueAsString(claims);
-                exchange
-                        .getRequest()
+                exchange.getRequest()
                         .mutate()
                         .header(X_USER_CLAIMS.getValue(), URLEncoder.encode(jsonClaims, StandardCharsets.UTF_8))
                         .build();
