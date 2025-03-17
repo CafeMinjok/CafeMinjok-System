@@ -13,6 +13,7 @@
             <option value="$PROJECT_DIR$/service" />
             <option value="$PROJECT_DIR$/service/auth" />
             <option value="$PROJECT_DIR$/service/auth/auth_dto" />
+            <option value="$PROJECT_DIR$/service/auth/server" />
             <option value="$PROJECT_DIR$/service/eureka" />
             <option value="$PROJECT_DIR$/service/eureka/server" />
             <option value="$PROJECT_DIR$/service/gateway" />
