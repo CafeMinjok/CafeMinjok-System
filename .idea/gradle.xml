@@ -21,14 +21,6 @@
           </set>
         </option>
       </GradleProjectSettings>
-      <GradleProjectSettings>
-        <option name="externalProjectPath" value="$PROJECT_DIR$/service/auth/auth_dto" />
-        <option name="modules">
-          <set>
-            <option value="$PROJECT_DIR$/service/auth/auth_dto" />
-          </set>
-        </option>
-      </GradleProjectSettings>
     </option>
   </component>
 </project>

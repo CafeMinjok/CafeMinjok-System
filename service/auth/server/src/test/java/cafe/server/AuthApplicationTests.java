@@ -1,4 +1,4 @@
-package cafe.auth.server;
+package cafe.server;
 
 import org.springframework.boot.test.context.SpringBootTest;
 

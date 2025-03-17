@@ -5,5 +5,5 @@ include(":common:domain")
 include(":service:eureka:server")
 include(":service:gateway:server")
 
-include(":service:auth:auth_dto")
 include(":service:auth:server")
+include(":service:auth:auth_dto")
