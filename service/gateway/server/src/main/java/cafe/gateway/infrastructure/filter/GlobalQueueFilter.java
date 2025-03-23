@@ -1,6 +1,6 @@
 package cafe.gateway.infrastructure.filter;
 
-import cafe.auth_dto.jwt.JwtClaim;
+import cafe.auth.auth_dto.jwt.JwtClaim;
 import cafe.gateway.application.UserQueueService;
 import cafe.gateway.infrastructure.exception.GatewayErrorCode;
 import cafe.gateway.infrastructure.exception.GatewayException;
