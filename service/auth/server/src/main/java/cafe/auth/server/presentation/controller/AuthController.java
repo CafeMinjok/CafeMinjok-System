@@ -1,14 +1,14 @@
 package cafe.auth.server.presentation.controller;
 
+import cafe.auth.server.exception.AuthErrorCode;
+import cafe.auth.server.exception.AuthException;
 import cafe.domain.response.ApiResponse;
 import cafe.auth.server.application.dto.AuthResponse;
 import cafe.auth.server.application.service.AuthService;
 import cafe.auth.server.presentation.request.AuthRequest;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
 @RequestMapping("/api/auth")
@@ -22,4 +22,10 @@ public class AuthController {
         return ApiResponse.ok(authService.signIn(request));
     }
 
+//    @ExceptionHandler(AuthException.class)
+//    public ResponseEntity<ApiResponse<Void>> handleAuthException(AuthException ex) {
+//        AuthErrorCode errorCode = ex.getErrorCode();
+//        ApiResponse<Void> response = ApiResponse.error(errorCode.name(), errorCode.getMessage());
+//        return new ResponseEntity<>(response, errorCode.getStatus());
+//    }
 }

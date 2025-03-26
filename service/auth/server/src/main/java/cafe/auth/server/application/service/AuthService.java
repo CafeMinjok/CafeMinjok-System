@@ -2,6 +2,7 @@ package cafe.auth.server.application.service;
 
 import cafe.auth.auth_dto.jwt.JwtClaim;
 import cafe.auth.server.application.dto.AuthResponse;
+import cafe.auth.server.exception.AuthErrorCode;
 import cafe.auth.server.exception.AuthException;
 import cafe.auth.server.infrastructure.properties.JwtProperties;
 import cafe.auth.server.presentation.request.AuthRequest;
@@ -17,6 +18,8 @@ import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 
 import java.nio.charset.StandardCharsets;
+import java.util.Date;
+import java.util.Map;
 
 import static cafe.auth.server.domain.JwtConstant.*;
 import static cafe.auth.server.exception.AuthErrorCode.*;
@@ -39,7 +42,16 @@ public class AuthService {
     public AuthResponse.SignIn signIn(AuthRequest.SignIn request) {
         UserDto userData = userService.getUserByUsername(request.getUsername());
 
-        return null;
+        if (userData == null
+        || !passwordEncoder.matches(request.getPassword(), userData.getPassword())) {
+            throw new AuthException(SIGN_IN_FAIL);
+        }
+
+        return AuthResponse.SignIn.of(
+                this.createToken(
+                        JwtClaim.create(userData.getUserId(), userData.getUsername(), userData.getRole())
+                )
+        );
     }
 
     public JwtClaim verifyToken(String token) {
@@ -56,7 +68,7 @@ public class AuthService {
     private SecretKey createSecretKey() {
         return new SecretKeySpec(
                 jwtProperties.getSecretKey().getBytes(StandardCharsets.UTF_8),
-                Jwts.SIG.HS256.key().build().toString()
+                "HmacSHA256"
         );
     }
 
@@ -65,6 +77,27 @@ public class AuthService {
                 claims.get(USER_ID, Long.class),
                 claims.get(USER_NAME, String.class),
                 claims.get(USER_ROLE, String.class)
+        );
+    }
+
+    private String createToken(JwtClaim jwtClaim) {
+        Map<String, Object> tokenClaims = this.createClaims(jwtClaim);
+        Date now = new Date(System.currentTimeMillis());
+        long accessTokenExpireIn = jwtProperties.getAccessTokenExpireIn();
+
+        return Jwts.builder()
+                .claims(tokenClaims)
+                .issuedAt(now)
+                .expiration(new Date(now.getTime() + accessTokenExpireIn * MILLI_SECOND))
+                .signWith(secretKey, Jwts.SIG.HS256)
+                .compact();
+    }
+
+    private Map<String, Object> createClaims(JwtClaim jwtClaim) {
+        return Map.of(
+                USER_ID, jwtClaim.getUserId(),
+                USER_NAME, jwtClaim.getUsername(),
+                USER_ROLE, jwtClaim.getRole()
         );
     }
 }
