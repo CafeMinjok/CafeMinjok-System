@@ -5,10 +5,12 @@ import cafe.auth.server.application.dto.AuthResponse;
 import cafe.auth.server.exception.AuthException;
 import cafe.auth.server.infrastructure.properties.JwtProperties;
 import cafe.auth.server.presentation.request.AuthRequest;
+import cafe.user.user_dto.infrastructure.UserDto;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.crypto.SecretKey;
@@ -22,15 +24,21 @@ import static cafe.auth.server.exception.AuthErrorCode.*;
 @Service
 public class AuthService {
 
+    private final UserService userService;
     private final JwtProperties jwtProperties;
     private final SecretKey secretKey;
+    private final PasswordEncoder passwordEncoder;
 
-    public AuthService(JwtProperties jwtProperties) {
+    public AuthService(UserService userService, JwtProperties jwtProperties, PasswordEncoder passwordEncoder) {
+        this.userService = userService;
         this.jwtProperties = jwtProperties;
         this.secretKey = createSecretKey();
+        this.passwordEncoder = passwordEncoder;
     }
 
     public AuthResponse.SignIn signIn(AuthRequest.SignIn request) {
+        UserDto userData = userService.getUserByUsername(request.getUsername());
+
         return null;
     }
 
