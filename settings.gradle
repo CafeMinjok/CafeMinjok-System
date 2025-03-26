@@ -2,6 +2,8 @@ rootProject.name = 'CafeMinjok'
 
 include(":common:domain")
 
+include(':service:user:user_dto')
+
 include(":service:eureka:server")
 include(":service:gateway:server")
 

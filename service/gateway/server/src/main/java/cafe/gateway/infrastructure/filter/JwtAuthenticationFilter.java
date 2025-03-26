@@ -1,6 +1,6 @@
 package cafe.gateway.infrastructure.filter;
 
-import cafe.auth_dto.jwt.JwtClaim;
+import cafe.auth.auth_dto.jwt.JwtClaim;
 import cafe.gateway.application.AuthService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

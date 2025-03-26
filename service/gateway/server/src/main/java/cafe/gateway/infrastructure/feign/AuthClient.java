@@ -1,6 +1,6 @@
 package cafe.gateway.infrastructure.feign;
 
-import cafe.auth_dto.jwt.JwtClaim;
+import cafe.auth.auth_dto.jwt.JwtClaim;
 import cafe.gateway.application.AuthService;
 import cafe.gateway.infrastructure.configuration.AuthFeignConfig;
 import org.springframework.cloud.openfeign.FeignClient;

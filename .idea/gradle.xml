@@ -18,6 +18,8 @@
             <option value="$PROJECT_DIR$/service/eureka/server" />
             <option value="$PROJECT_DIR$/service/gateway" />
             <option value="$PROJECT_DIR$/service/gateway/server" />
+            <option value="$PROJECT_DIR$/service/user" />
+            <option value="$PROJECT_DIR$/service/user/user_dto" />
           </set>
         </option>
       </GradleProjectSettings>
