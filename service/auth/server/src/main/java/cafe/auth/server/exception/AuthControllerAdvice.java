@@ -18,12 +18,12 @@ public class AuthControllerAdvice {
                 .body(ApiResponse.error(errorCode.getStatus().name(), errorCode.getMessage()));
     }
 
-//    @ExceptionHandler(RuntimeException.class)
-//    public ResponseEntity<?> runtimeExceptionHandler(RuntimeException e) {
-//        log.error("Error occurs in AuthServer : {}", e.getMessage());
-//        return ResponseEntity.status(AuthErrorCode.INTERNAL_SERVER_ERROR.getStatus())
-//                .body(
-//                        ApiResponse.error(
-//                                AuthErrorCode.INTERNAL_SERVER_ERROR.getStatus().name(), e.getMessage()));
-//    }
+    @ExceptionHandler(RuntimeException.class)
+    public ResponseEntity<?> runtimeExceptionHandler(RuntimeException e) {
+        log.error("Error occurs in AuthServer : {}", e.getMessage());
+        return ResponseEntity.status(AuthErrorCode.INTERNAL_SERVER_ERROR.getStatus())
+                .body(
+                        ApiResponse.error(
+                                AuthErrorCode.INTERNAL_SERVER_ERROR.getStatus().name(), e.getMessage()));
+    }
 }

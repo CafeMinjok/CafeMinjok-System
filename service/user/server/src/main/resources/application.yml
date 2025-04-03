@@ -1,0 +1,14 @@
+server:
+  port: 19092
+
+spring:
+  application:
+    name: user
+  profiles:
+    default: local
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info
