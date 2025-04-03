@@ -40,7 +40,7 @@ public class AuthService {
     }
 
     public AuthResponse.SignIn signIn(AuthRequest.SignIn request) {
-        UserDto userData = userService.getUserByUsername(request.getUsername());
+        UserDto userData = userService.getUserByUsername(request.getUsername());    // user:service 모듈 호출
 
         if (userData == null
         || !passwordEncoder.matches(request.getPassword(), userData.getPassword())) {
