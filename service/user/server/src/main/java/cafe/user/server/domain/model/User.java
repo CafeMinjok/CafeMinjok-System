@@ -1,6 +1,7 @@
 package cafe.user.server.domain.model;
 
 import cafe.user.server.domain.model.vo.UserRole;
+import cafe.user.server.presentation.request.UserRequest;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -37,4 +38,19 @@ public class User {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private UserRole role;
+
+    @Column
+    private Boolean isDeleted;
+
+    public static User create(UserRequest.Create request, String encodedPassword) {
+        return User.builder()
+                .username(request.getUsername())
+                .password(encodedPassword)
+                .nickname(request.getNickname())
+                .point(BigDecimal.ZERO)
+                .email(request.getEmail())
+                .role(request.getRole())
+                .isDeleted(false)
+                .build();
+    }
 }
