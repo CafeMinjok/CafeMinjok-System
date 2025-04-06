@@ -1,6 +1,6 @@
 package cafe.user.server.presentation.controller;
 
-import cafe.user.server.application.service.UserService;
+import cafe.product.server.application.service.UserService;
 import cafe.user.user_dto.infrastructure.UserDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;

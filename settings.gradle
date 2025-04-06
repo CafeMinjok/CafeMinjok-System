@@ -5,6 +5,9 @@ include(":common:domain")
 include(':service:user:user_dto')
 include(':service:user:server')
 
+include(':service:user:user_dto')
+include(':service:product:server')
+
 include(":service:eureka:server")
 include(":service:gateway:server")
 
