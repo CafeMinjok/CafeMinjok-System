@@ -22,10 +22,4 @@ public class AuthController {
         return ApiResponse.ok(authService.signIn(request));
     }
 
-//    @ExceptionHandler(AuthException.class)
-//    public ResponseEntity<ApiResponse<Void>> handleAuthException(AuthException ex) {
-//        AuthErrorCode errorCode = ex.getErrorCode();
-//        ApiResponse<Void> response = ApiResponse.error(errorCode.name(), errorCode.getMessage());
-//        return new ResponseEntity<>(response, errorCode.getStatus());
-//    }
 }

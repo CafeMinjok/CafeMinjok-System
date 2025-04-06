@@ -10,6 +10,7 @@
         <module name="CafeMinjok.service.auth.server.main" />
         <module name="CafeMinjok.service.auth.auth_dto.main" />
         <module name="CafeMinjok.service.gateway.server.main" />
+        <module name="CafeMinjok.service.user.server.main" />
         <module name="CafeMinjok.service.user.user_dto.main" />
       </profile>
       <profile name="Gradle Imported" enabled="true">

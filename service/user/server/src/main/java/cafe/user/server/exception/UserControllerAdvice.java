@@ -1,4 +1,4 @@
-package cafe.auth.server.exception;
+package cafe.user.server.exception;
 
 import cafe.domain.response.ApiResponse;
 import lombok.extern.slf4j.Slf4j;
@@ -8,22 +8,22 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @Slf4j
 @ControllerAdvice
-public class AuthControllerAdvice {
+public class UserControllerAdvice {
 
-    @ExceptionHandler(AuthException.class)
-    public ResponseEntity<?> businessExceptionHandler(AuthException e) {
-        AuthErrorCode errorCode = e.getErrorCode();
-        log.error("Error occurs in AuthServer : {}", e.getErrorCode());
+    @ExceptionHandler(UserException.class)
+    public ResponseEntity<?> businessExceptionHandler(UserException e) {
+        UserErrorCode errorCode = e.getErrorCode();
+        log.error("Error occurs in UserServer : {}", e.getErrorCode());
         return ResponseEntity.status(errorCode.getStatus())
                 .body(ApiResponse.error(errorCode.getStatus().name(), errorCode.getMessage()));
     }
 
     @ExceptionHandler(RuntimeException.class)
     public ResponseEntity<?> runtimeExceptionHandler(RuntimeException e) {
-        log.error("Error occurs in AuthServer : {}", e.getMessage());
-        return ResponseEntity.status(AuthErrorCode.INTERNAL_SERVER_ERROR.getStatus())
+        log.error("Error occurs in UserServer : {}", e.getMessage());
+        return ResponseEntity.status(UserErrorCode.INTERNAL_SERVER_ERROR.getStatus())
                 .body(
                         ApiResponse.error(
-                                AuthErrorCode.INTERNAL_SERVER_ERROR.getStatus().name(), e.getMessage()));
+                                UserErrorCode.INTERNAL_SERVER_ERROR.getStatus().name(), e.getMessage()));
     }
 }
