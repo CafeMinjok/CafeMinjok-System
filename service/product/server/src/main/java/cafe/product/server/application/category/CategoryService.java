@@ -22,7 +22,7 @@ public class CategoryService {
 
     /**
      * 카테고리 생성 후 "categories-cache"라는 이름의 캐시에서 키가 'categories'인 항목을 제거
-     * 캐시된 카테고리 목록이 최신 상태를 유지하기 위함
+     * 목적: 캐시된 카테고리 목록이 최신 상태를 유지하기 위함
      */
     @Transactional
     @CacheEvict(cacheNames = "categories-cache", key = "'categories'")
