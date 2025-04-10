@@ -6,6 +6,8 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/service/auth/auth_dto/CafeMinjok.service.auth.auth_dto.main.iml" filepath="$PROJECT_DIR$/.idea/modules/service/auth/auth_dto/CafeMinjok.service.auth.auth_dto.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/service/auth/server/CafeMinjok.service.auth.server.main.iml" filepath="$PROJECT_DIR$/.idea/modules/service/auth/server/CafeMinjok.service.auth.server.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/service/gateway/server/CafeMinjok.service.gateway.server.main.iml" filepath="$PROJECT_DIR$/.idea/modules/service/gateway/server/CafeMinjok.service.gateway.server.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/service/product/server/CafeMinjok.service.product.server.main.iml" filepath="$PROJECT_DIR$/.idea/modules/service/product/server/CafeMinjok.service.product.server.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/service/user/server/CafeMinjok.service.user.server.main.iml" filepath="$PROJECT_DIR$/.idea/modules/service/user/server/CafeMinjok.service.user.server.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/service/user/user_dto/CafeMinjok.service.user.user_dto.main.iml" filepath="$PROJECT_DIR$/.idea/modules/service/user/user_dto/CafeMinjok.service.user.user_dto.main.iml" />
     </modules>
   </component>

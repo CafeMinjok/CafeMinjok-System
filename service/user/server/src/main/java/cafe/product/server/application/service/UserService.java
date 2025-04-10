@@ -1,4 +1,4 @@
-package cafe.user.server.application.service;
+package cafe.product.server.application.service;
 
 import cafe.user.server.domain.model.User;
 import cafe.user.server.domain.repository.UserRepository;
