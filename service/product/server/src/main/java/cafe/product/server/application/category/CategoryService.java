@@ -47,14 +47,6 @@ public class CategoryService {
                 .orElseThrow(() -> new ProductServerException(ProductErrorCode.NOT_FOUND_CATEGORY));
     }
 
-    @Cacheable(cacheNames = "categories-cache", key = "'categories'")
-    public List<CategoryResponse> fetchAndCacheCategories() {
-        return categoryRepository.findAllWithSubCategories().stream()
-                .filter(category -> category.getParent() == null)
-                .map(CategoryResponse::fromEntity)
-                .collect(Collectors.toList());
-    }
-
     @Transactional
     @CacheEvict(cacheNames = "categories-cache", key = "'categories'")
     public CategoryResponse updateCategory(
@@ -76,5 +68,20 @@ public class CategoryService {
         if (newParent != null) {
             newParent.addSubCategory(target);
         }
+    }
+
+    @Transactional
+    @CacheEvict(cacheNames = "categories-cache", key = "'categories'")
+    public void deleteCategory(Long categoryId) {
+        Category category = findByCategoryId(categoryId);
+        categoryRepository.delete(category);
+    }
+
+    @Cacheable(cacheNames = "categories-cache", key = "'categories'")
+    public List<CategoryResponse> fetchAndCacheCategories() {
+        return categoryRepository.findAllWithSubCategories().stream()
+                .filter(category -> category.getParent() == null)
+                .map(CategoryResponse::fromEntity)
+                .collect(Collectors.toList());
     }
 }

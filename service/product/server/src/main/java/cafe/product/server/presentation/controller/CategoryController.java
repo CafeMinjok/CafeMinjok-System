@@ -39,6 +39,13 @@ public class CategoryController {
         );
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_MANAGER')")
+    @DeleteMapping("/{categoryId}")
+    public ApiResponse<Void> deleteCategory(@PathVariable("categoryId") @NotNull Long categoryId) {
+        categoryService.deleteCategory(categoryId);
+        return ApiResponse.ok();
+    }
+
     @GetMapping("/search")
     public ApiResponse<List<CategoryResponse>> getCategories() {
         return ApiResponse.ok(categoryService.fetchAndCacheCategories());
