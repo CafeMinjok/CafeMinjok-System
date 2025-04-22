@@ -3,13 +3,15 @@ package cafe.product.server.presentation.controller;
 import cafe.domain.response.ApiResponse;
 import cafe.product.server.application.category.CategoryService;
 import cafe.product.server.presentation.request.CategoryCreateRequest;
+import cafe.product.server.presentation.request.CategoryUpdateRequest;
+import cafe.product.server.presentation.response.CategoryResponse;
+import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/categories")
@@ -25,5 +27,27 @@ public class CategoryController {
         return ApiResponse.created(
                 categoryService.createCategory(request.name(), request.parentCategoryId())
         );
+    }
+
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_MANAGER')")
+    @PatchMapping("/{categoryId}")
+    public ApiResponse<CategoryResponse> updateCategory(
+            @PathVariable("categoryId") @NotNull Long categoryId,
+            @RequestBody @Validated CategoryUpdateRequest request) {
+        return ApiResponse.ok(
+                categoryService.updateCategory(categoryId, request.name(), request.parentCategoryId())
+        );
+    }
+
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_MANAGER')")
+    @DeleteMapping("/{categoryId}")
+    public ApiResponse<Void> deleteCategory(@PathVariable("categoryId") @NotNull Long categoryId) {
+        categoryService.deleteCategory(categoryId);
+        return ApiResponse.ok();
+    }
+
+    @GetMapping("/search")
+    public ApiResponse<List<CategoryResponse>> getCategories() {
+        return ApiResponse.ok(categoryService.fetchAndCacheCategories());
     }
 }
